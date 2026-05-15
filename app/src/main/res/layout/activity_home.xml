@@ -385,7 +385,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
 
-                    app:srcCompat="@drawable/icon_location" />
+                    app:srcCompat="@drawable/icon_lokasi" />
 
                 <TextView
                     android:id="@+id/textView315"

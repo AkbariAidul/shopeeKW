@@ -1,9 +1,12 @@
 package com.haikaldanaidul.shopeeapps;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +19,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
+
         if(Build.VERSION.SDK_INT >= 21){
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -34,19 +38,19 @@ public class Home extends AppCompatActivity {
         };
         String[] ctitle = {
                 "Ryu Mesin Pressure\nWasher RPW-100...",
-                "Ryu Mesin Pressure\nWasher RPW-100...",
-                "Ryu Mesin Pressure\nWasher RPW-100...",
-                "Ryu Mesin Pressure\nWasher RPW-100...",
-                "Ryu Mesin Pressure\nWasher RPW-100...",
-                "Ryu Mesin Pressure\nWasher RPW-100...",
+                "Tatakan box motor\nTouring...",
+                "Corolla mesin cuci\nmobil motor...",
+                "Celana panjang tactical\ncargo pria...",
+                "Tatakan box motor\nTouring...",
+                "Corolla mesin cuci\nmobil motor...",
         };
-        String[] cprise = {
+        String[] cprice = {
+                "Rp234.600",
+                "Rp100.000",
+                "Rp700.500",
                 "Rp777.600",
-                "Rp777.600",
-                "Rp777.600",
-                "Rp777.600",
-                "Rp777.600",
-                "Rp777.600"
+                "Rp812.600",
+                "Rp333.000"
         };
         String[] csold = {
                 "4 terjual",
@@ -57,9 +61,19 @@ public class Home extends AppCompatActivity {
                 "4 terjual"
         };
 
-        GridItemAdapter gridItemAdapter = new GridItemAdapter(Home.this, ctitle, cprise, csold, cimg); //item yang ingin ditampilkan
+        GridItemAdapter gridItemAdapter = new GridItemAdapter(Home.this, ctitle, cprice, csold, cimg); //item yang ingin ditampilkan
         GridView gridItem = findViewById(R.id.gridItem); //identifier
         gridItem.setAdapter(gridItemAdapter); //menampilkan item di gridView
 
+        gridItem.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent openDetail = new Intent(Home.this, DetailItem.class);
+                openDetail.putExtra("title", ctitle[position]);
+                openDetail.putExtra("price", cprice[position]);
+                openDetail.putExtra("img", cimg[position]+"");
+                startActivity(openDetail );
+            }
+        });
     }
 }
