@@ -76,6 +76,7 @@
 
         android:background="@drawable/rounded_button"
 
+        android:onClick="openCart"
         android:padding="6dp"
         android:paddingTop="10dp"
         android:scaleType="centerInside"

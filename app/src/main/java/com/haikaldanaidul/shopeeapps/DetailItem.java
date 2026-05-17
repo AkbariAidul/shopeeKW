@@ -34,7 +34,7 @@ public class DetailItem extends AppCompatActivity {
 
 //        Identifier
         detailPrice = findViewById(R.id.detailPrice);
-        detailPrice = findViewById(R.id.detailTitle);
+        detailTitle = findViewById(R.id.detailTitle);
         detailImg = findViewById(R.id.detailImg);
 
         String price = getIntent().getStringExtra("price");
@@ -49,5 +49,10 @@ public class DetailItem extends AppCompatActivity {
     public void backToHome(View view){
         Intent openHome = new Intent(DetailItem.this, Home.class);
         startActivity(openHome);
+    }
+
+    public void openCartDetail(View view){
+        Intent toCart = new Intent(DetailItem.this, Cart.class);
+        startActivity(toCart);
     }
 }

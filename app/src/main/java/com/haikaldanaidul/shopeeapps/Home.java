@@ -76,4 +76,9 @@ public class Home extends AppCompatActivity {
             }
         });
     }
+
+    public void openCart(View view){
+        Intent toCart = new Intent(Home.this, Cart.class);
+        startActivity(toCart);
+    }
 }
